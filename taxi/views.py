@@ -77,6 +77,7 @@ class CarUpdateView(LoginRequiredMixin, generic.UpdateView):
 
 class CarDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Car
+    queryset = Car.objects.all().prefetch_related("drivers")
     success_url = reverse_lazy("taxi:car-list")
 
 
