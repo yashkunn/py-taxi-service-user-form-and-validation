@@ -18,7 +18,7 @@ class DriverCreationForm(UserCreationForm):
         return validate_license_number(self.cleaned_data["license_number"])
 
 
-class DriverLicenseUpdateForm(forms.ModelForm):
+class DriverLicenseUpdateForm(DriverCreationForm):
     class Meta:
         model = Driver
         fields = ("license_number",)
@@ -36,7 +36,7 @@ class CarForm(forms.ModelForm):
 
     class Meta:
         model = Car
-        fields = "__all__"
+        fields = ["model", "manufacturer", "drivers"]
 
 
 def validate_license_number(
